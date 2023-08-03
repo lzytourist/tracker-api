@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRegistrationRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -38,5 +39,10 @@ class AuthController extends Controller
         return response()->json(data: [
             'message' => 'Wrong credentials.'
         ], status: Response::HTTP_BAD_REQUEST);
+    }
+
+    public function user(Request $request)
+    {
+        return $request->user();
     }
 }
